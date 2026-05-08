@@ -167,7 +167,7 @@ public class ProxyMiddleware
             if (upstreamResponse.IsSuccessStatusCode && usedProvider is not null)
             {
                 // Parse token usage from response
-                var (inputTokens, outputTokens, modelName) = ExtractUsage(responseBody, usedProvider);
+                var (inputTokens, outputTokens, modelName) = ExtractUsage(responseBody, usedProvider, _logger);
                 var cost = tokenCounter.EstimateCostUsd(usedProvider, modelName, inputTokens, outputTokens);
 
                 await budgetService.RecordUsageAsync(apiKey.Id, cost);
@@ -186,7 +186,7 @@ public class ProxyMiddleware
         }
     }
 
-    private static (int input, int output, string model) ExtractUsage(string responseBody, string provider)
+    private static (int input, int output, string model) ExtractUsage(string responseBody, string provider, ILogger logger)
     {
         try
         {
@@ -208,7 +208,10 @@ public class ProxyMiddleware
             if (root.TryGetProperty("input_tokens", out var ait) && root.TryGetProperty("output_tokens", out var aot))
                 return (ait.GetInt32(), aot.GetInt32(), model);
         }
-        catch { /* best-effort */ }
+        catch (JsonException ex)
+        {
+            logger.LogWarning(ex, "Failed to parse upstream response for token counting; falling back to zero counts.");
+        }
 
         return (0, 0, "unknown");
     }

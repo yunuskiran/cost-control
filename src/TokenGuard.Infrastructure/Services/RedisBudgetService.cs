@@ -7,7 +7,7 @@ namespace TokenGuard.Infrastructure.Services;
 public class RedisBudgetService : IBudgetService
 {
     private readonly IConnectionMultiplexer _redis;
-    private static readonly TimeSpan TtL = TimeSpan.FromHours(48);
+    private static readonly TimeSpan Ttl = TimeSpan.FromHours(48);
 
     public RedisBudgetService(IConnectionMultiplexer redis)
     {
@@ -46,6 +46,6 @@ public class RedisBudgetService : IBudgetService
         var db = _redis.GetDatabase();
         var key = SpendKey(apiKeyId);
         await db.StringIncrementAsync(key, (double)costUsd);
-        await db.KeyExpireAsync(key, TtL);
+        await db.KeyExpireAsync(key, Ttl);
     }
 }

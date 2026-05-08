@@ -1,0 +1,12 @@
+/home/runner/work/cost-control/cost-control/src/TokenGuard.Core/bin/Debug/net9.0/TokenGuard.Core.deps.json
+/home/runner/work/cost-control/cost-control/src/TokenGuard.Core/bin/Debug/net9.0/TokenGuard.Core.dll
+/home/runner/work/cost-control/cost-control/src/TokenGuard.Core/bin/Debug/net9.0/TokenGuard.Core.pdb
+/home/runner/work/cost-control/cost-control/src/TokenGuard.Core/obj/Debug/net9.0/TokenGuard.Core.GeneratedMSBuildEditorConfig.editorconfig
+/home/runner/work/cost-control/cost-control/src/TokenGuard.Core/obj/Debug/net9.0/TokenGuard.Core.AssemblyInfoInputs.cache
+/home/runner/work/cost-control/cost-control/src/TokenGuard.Core/obj/Debug/net9.0/TokenGuard.Core.AssemblyInfo.cs
+/home/runner/work/cost-control/cost-control/src/TokenGuard.Core/obj/Debug/net9.0/TokenGuard.Core.csproj.CoreCompileInputs.cache
+/home/runner/work/cost-control/cost-control/src/TokenGuard.Core/obj/Debug/net9.0/TokenGuard.Core.sourcelink.json
+/home/runner/work/cost-control/cost-control/src/TokenGuard.Core/obj/Debug/net9.0/TokenGuard.Core.dll
+/home/runner/work/cost-control/cost-control/src/TokenGuard.Core/obj/Debug/net9.0/refint/TokenGuard.Core.dll
+/home/runner/work/cost-control/cost-control/src/TokenGuard.Core/obj/Debug/net9.0/TokenGuard.Core.pdb
+/home/runner/work/cost-control/cost-control/src/TokenGuard.Core/obj/Debug/net9.0/ref/TokenGuard.Core.dll

@@ -1,0 +1,43 @@
+services:
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  api:
+    build:
+      context: .
+      dockerfile: src/TokenGuard.Api/Dockerfile
+    ports:
+      - "5000:8080"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+      - GEMINI_API_KEY=${GEMINI_API_KEY:-}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY:-}
+      - ConnectionStrings__Redis=redis:6379
+      - ConnectionStrings__Sqlite=/data/tokenguard.db
+      - Jwt__Secret=${JWT_SECRET:-CHANGE_ME_32_CHARS_MIN_SECRET_KEY_1}
+      - Jwt__Issuer=TokenGuard
+      - Cors__AllowedOrigin=http://localhost:3000
+    volumes:
+      - api_data:/data
+    depends_on:
+      redis:
+        condition: service_healthy
+
+  dashboard:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80"
+    depends_on:
+      - api
+
+volumes:
+  api_data:

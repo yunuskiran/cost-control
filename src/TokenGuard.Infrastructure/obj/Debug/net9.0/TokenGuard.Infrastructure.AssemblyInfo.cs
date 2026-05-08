@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TokenGuard.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b2f3022be0d4e507e60df397ab2843f7f3d5569b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ab4789f69dedf895fe71ac4cf400abc82e8e0f2d")]
 [assembly: System.Reflection.AssemblyProductAttribute("TokenGuard.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TokenGuard.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

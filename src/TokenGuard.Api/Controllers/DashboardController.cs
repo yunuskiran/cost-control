@@ -69,23 +69,26 @@ public class DashboardController : ControllerBase
 
     private async Task<List<object>> GetSpendLast7DaysAsync(CancellationToken ct)
     {
+        var since = DateTime.UtcNow.Date.AddDays(-6);
+        var allKeys = await _repo.GetAllApiKeysAsync(ct);
+
+        // Collect all records for all keys in the window with a single query per key,
+        // then group in memory to avoid an N*days query pattern.
+        var allRecords = new List<Core.Entities.UsageRecord>();
+        foreach (var key in allKeys)
+        {
+            var records = await _repo.GetUsageByApiKeyAsync(key.Id, 7, ct);
+            allRecords.AddRange(records);
+        }
+
         var result = new List<object>();
         for (int i = 6; i >= 0; i--)
         {
             var date = DateTime.UtcNow.Date.AddDays(-i);
             var nextDate = date.AddDays(1);
-
-            var allKeys = await _repo.GetAllApiKeysAsync(ct);
-            decimal dayTotal = 0;
-
-            foreach (var key in allKeys)
-            {
-                var records = await _repo.GetUsageByApiKeyAsync(key.Id, 7, ct);
-                dayTotal += records
-                    .Where(r => r.Timestamp >= date && r.Timestamp < nextDate)
-                    .Sum(r => r.EstimatedCostUsd);
-            }
-
+            var dayTotal = allRecords
+                .Where(r => r.Timestamp >= date && r.Timestamp < nextDate)
+                .Sum(r => r.EstimatedCostUsd);
             result.Add(new { date = date.ToString("yyyy-MM-dd"), spendUsd = dayTotal });
         }
 

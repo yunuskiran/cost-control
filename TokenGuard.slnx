@@ -1,0 +1,7 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/TokenGuard.Api/TokenGuard.Api.csproj" />
+    <Project Path="src/TokenGuard.Core/TokenGuard.Core.csproj" />
+    <Project Path="src/TokenGuard.Infrastructure/TokenGuard.Infrastructure.csproj" />
+  </Folder>
+</Solution>

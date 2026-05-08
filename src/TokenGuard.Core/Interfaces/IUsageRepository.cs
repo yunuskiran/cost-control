@@ -12,4 +12,5 @@ public interface IUsageRepository
     Task AddUsageRecordAsync(UsageRecord record, CancellationToken ct = default);
     Task<IEnumerable<UsageRecord>> GetUsageByApiKeyAsync(Guid apiKeyId, int days, CancellationToken ct = default);
     Task<IEnumerable<UsageRecord>> GetAllUsageTodayAsync(CancellationToken ct = default);
+    Task<IEnumerable<UsageRecord>> GetAllUsageInRangeAsync(DateTime since, DateTime until, CancellationToken ct = default);
 }

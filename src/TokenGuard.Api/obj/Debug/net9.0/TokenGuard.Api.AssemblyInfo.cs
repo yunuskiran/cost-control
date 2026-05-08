@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TokenGuard.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ab4789f69dedf895fe71ac4cf400abc82e8e0f2d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5ba0f9dd5841b12056372c1b421fd954ff2dc6e9")]
 [assembly: System.Reflection.AssemblyProductAttribute("TokenGuard.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TokenGuard.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

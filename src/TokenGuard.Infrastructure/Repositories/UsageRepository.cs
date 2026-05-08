@@ -57,4 +57,9 @@ public class UsageRepository : IUsageRepository
             .Where(r => r.Timestamp >= today)
             .ToListAsync(ct);
     }
+
+    public async Task<IEnumerable<UsageRecord>> GetAllUsageInRangeAsync(DateTime since, DateTime until, CancellationToken ct = default)
+        => await _db.UsageRecords
+            .Where(r => r.Timestamp >= since && r.Timestamp < until)
+            .ToListAsync(ct);
 }
